@@ -4,12 +4,17 @@ import {useState} from 'react';
 import SinInput from './sinInput';
 
 function App() {
+    const getRandomAngle = () => {
+      return Math.floor(Math.random() * free) + 1;
+    };
+
     const [score, setScore] = useState(0);
     const [best, setBest] = useState(0);
     const [time, setTime] = useState(0);
-    const [angle, setAngle] = useState(1);
+    const [angle, setAngle] = useState(getRandomAngle());
     const [correctValue, setCorrectValue] = useState(null);
     const [showCorrect, setShowCorrect] = useState(false);
+    const [free] = useState(30)
 
     const handleAdd = () => {
         setScore((prev) => {
@@ -17,7 +22,7 @@ function App() {
             setBest((b) => Math.max(b, newScore));
             return newScore;
         });
-        setAngle((prev) => prev + 1);
+        setAngle(getRandomAngle());
     };
 
     const handleReset = () => {
@@ -28,7 +33,7 @@ function App() {
 
       setScore(0);
       setTime(0);
-      setAngle(1);
+      setAngle(getRandomAngle());
     };
 
     const handleTime = () => {
@@ -41,9 +46,9 @@ function App() {
             <Card label="Wynik" value={score} id="wynik" />
             <Card label="Najlepszy" value={best} id="najlepszy" />
             <Card label="Czas" value={time.toFixed(2)} id="czas" />
-            <Card label="SPS (sin per second)" value={(time === 0 ? 0 : score/time).toFixed(2)} id="sp" />
+            <Card label="SPS (sin per second)" value={(time == 0 ? 0 : score/time).toFixed(2)} id="sp" />
         </div>
-        {showCorrect && (
+        {showCorrect && angle > free && (
           <p style={{
             position: 'absolute',
             color: 'red',
