@@ -46,7 +46,7 @@ function App() {
             <Card label="Wynik" value={score} id="wynik" />
             <Card label="Najlepszy" value={best} id="najlepszy" />
             <Card label="Czas" value={time.toFixed(2)} id="czas" />
-            <Card label="SPS (sin per second)" value={(time == 0 ? 0 : score/time).toFixed(2)} id="sp" />
+            <Card label="SPS (sin per second)" value={(time === 0 ? 0 : score/time).toFixed(2)} id="sp" />
         </div>
         {showCorrect && angle > free && (
           <p style={{
