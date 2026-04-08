@@ -4,6 +4,7 @@ import {useState} from 'react';
 import SinInput from './sinInput';
 
 function App() {
+    const [free] = useState(30)
     const getRandomAngle = () => {
       return Math.floor(Math.random() * free) + 1;
     };
@@ -14,7 +15,6 @@ function App() {
     const [angle, setAngle] = useState(getRandomAngle());
     const [correctValue, setCorrectValue] = useState(null);
     const [showCorrect, setShowCorrect] = useState(false);
-    const [free] = useState(30)
 
     const handleAdd = () => {
         setScore((prev) => {
