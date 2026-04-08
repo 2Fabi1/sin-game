@@ -48,7 +48,7 @@ function App() {
             <Card label="Czas" value={time.toFixed(2)} id="czas" />
             <Card label="SPS (sin per second)" value={(time === 0 ? 0 : score/time).toFixed(2)} id="sp" />
         </div>
-        {showCorrect && angle > free && (
+        {showCorrect && (
           <p style={{
             position: 'absolute',
             color: 'red',
